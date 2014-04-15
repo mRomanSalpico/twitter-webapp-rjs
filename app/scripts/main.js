@@ -2,6 +2,7 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         pouchdb: '../bower_components/pouchdb/dist/pouchdb-nightly',
+        'ydn-db': '../bower_components/ydn-db/jsc/ydn.db-dev',
         bootstrapAffix: '../bower_components/bootstrap/js/affix',
         bootstrapAlert: '../bower_components/bootstrap/js/alert',
         bootstrapButton: '../bower_components/bootstrap/js/button',
@@ -18,6 +19,9 @@ require.config({
     shim: {
         pouchdb: {
             exports : 'PouchDB'
+        },
+        'ydn-db': {
+            exports : 'ydn'
         },
         bootstrapAffix: {
             deps: ['jquery']
