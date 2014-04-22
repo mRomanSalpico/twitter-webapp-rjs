@@ -4,7 +4,7 @@
     'use strict';
 
     require.config({
-        baseUrl : '../../app/scripts/',
+        baseUrl : '../app/scripts/',
         paths : {
             // pouchdb  : '../bower_components/pouchdb/dist/pouchdb-nightly',
             'ydn-db' : '../bower_components/ydn-db/jsc/ydn.db-dev',
