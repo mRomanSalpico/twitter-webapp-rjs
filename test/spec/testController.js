@@ -35,9 +35,14 @@
 
         describe('#getTweetsFromTwitter', function () {
             it('Get all tweets from Twitter and save to DB',function (done){
-                ctrl.getTweetsFromTwitter();
-                assert.isTrue(srv.getTweets.calledOnce,'getTweets');
-                assert.isTrue(DB.addTweets.calledOnce,'addTweets');
+                var error = function(){
+                };
+                ctrl.getTweetsFromTwitter(function(){
+                    assert.isTrue(DB.addTweets.calledOnce,'addTweets not called');
+                    //console.log('se ha hecho el assert de addTweets');
+                },error);
+                assert.isTrue(srv.getTweets.calledOnce,'getTweets not called');
+                //console.log('se ha hecho el assert de getTweets');
                 done();
             });
 
