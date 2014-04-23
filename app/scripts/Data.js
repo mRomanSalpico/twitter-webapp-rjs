@@ -24,6 +24,12 @@ define('Data', ['ydn-db'], function(ydn) {
         req.fail(error);
     };
 
+    var getAllTweets = function(success, error) {
+        var req = db.values(tweetTable);
+        req.done(success);
+        req.fail(error);
+    };
+
     var updateTweet = function(tweet, success, error) {
         getTweet(tweet.id, function(t){
             if(t) {
@@ -58,6 +64,7 @@ define('Data', ['ydn-db'], function(ydn) {
         addTweet : addTweet,
         addTweets : addTweets,
         getTweet : getTweet,
+        getAllTweets : getAllTweets,
         updateTweet : updateTweet,
         removeTweet : removeTweet,
         clear : clear
