@@ -1,10 +1,11 @@
-define('Controller',['Data', 'Service'],function(DB,srv){
+define('Controller',['Data', 'Service', 'UI'],function(DB,srv,UI){
     'use strict';
 
     var getTweetsFromTwitter = function(success, error){
         srv.getTweets({},function(data){
             processTweets(data, function(tweets){
                 DB.addTweets(tweets, success, error);
+                UI.showTweetsList(tweets);
             }, error);
         }, error);
     };

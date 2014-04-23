@@ -40,25 +40,23 @@
 
         describe('#showTweetsList', function () {
             it('showTweetsList',function (done){
-                ui.showTweetsList([{id:'1',text:'prueba1'},{id:'2',text:'prueba2'},{id:'3',text:'prueba3'},{id:'4',text:'prueba4'}]);
+                ui.showTweetsList([{id:'1',text:'prueba1'},{id:'2',text:'prueba2'},{id:'3',text:'prueba3'},{id:'4',text:'prueba4'}],
+                    function(){
+                        done();
+                    });
                 assert.equal(4, $('#twitter-list').children().length);
-
-
-                done();
             });
             it('showTweetsList de 100',function (done){
 
-                var error = function(){
+                var error = function(err){
+                    throw err;
                 };
                 DB.getAllTweets(function(tweets){
                     ui.showTweetsList(tweets, function(){
                         assert.equal(100, $('#twitter-list').children().length);
-
+                        done();
                     }, error);
                 },error);
-
-
-                done();
             });
 
         });
