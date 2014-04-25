@@ -19,20 +19,10 @@
 
     describe('Events module', function () {
         var $;
-        var srv;
-        var DB;
-        var ui;
-        var ctrl;
-
 
         beforeEach(function(done){
-            require(['UI','jquery', 'Data', 'Controller'], function(UI,jquery, Data, Controller){
-                ui = UI;
+            require(['jquery'], function(jquery){
                 $ = jquery;
-                DB = Data;
-                ctrl = Controller;
-
-                sinon.spy(ui,'showTweetsList');
                 done();
             });
         });
@@ -42,12 +32,14 @@
             it('#Event datachange is fired',function (done){
                 var errTimeout = setTimeout(function(){
                     assert(false, 'Event never fired');
+                    console.log('todavia no se ha lanzado el datachange');
                     done();
                 }, 1000);
 
                 $(document).on('datachange', function(){
                     clearTimeout(errTimeout);
                     assert(true);
+                    console.log('se ha lanzado el datachange');
                     done();
                 });
                 document.dispatchEvent(new Event('datachange'));
