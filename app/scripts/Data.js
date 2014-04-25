@@ -59,6 +59,11 @@ define('Data', ['ydn-db'], function(ydn) {
         req.done(success);
         req.fail(error);
     };
+    var throwEvent = function(){
+        var event = new Event('datachange');
+        document.dispatchEvent(event);
+
+    };
 
     return {
         addTweet : addTweet,

@@ -5,7 +5,7 @@ define('Controller',['Data', 'Service', 'UI'],function(DB,srv,UI){
         srv.getTweets({},function(data){
             processTweets(data, function(tweets){
                 DB.addTweets(tweets, success, error);
-                UI.showTweetsList(tweets);
+                //UI.showTweetsList(tweets, success, error);
             }, error);
         }, error);
     };
@@ -27,11 +27,20 @@ define('Controller',['Data', 'Service', 'UI'],function(DB,srv,UI){
         }
         success(tweets);
     };
-    var error = function(){
+
+
+    var showLatestTweets =function(){
+        var tweets =DB.getAllTweets(function(tweets){
+            UI.showTweetsList(tweets);
+        });
 
     };
 
+    var error = function(){
+
+    };
     return{
-        getTweetsFromTwitter : getTweetsFromTwitter
+        getTweetsFromTwitter : getTweetsFromTwitter,
+        showLatestTweets : showLatestTweets
     };
 });
