@@ -10,7 +10,7 @@ define('UI', ['quo', 'handlebars'], function($, handlebars){
         var template = handlebars.compile(listTpl);
         var html = template({tweets:tweets});
         $list.html(html);
-        success();
+        //success();
     };
 
     return{
